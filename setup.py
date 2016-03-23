@@ -10,6 +10,7 @@ packages = [
 ]
 
 requires = [
+    'Django>=1.8.11',
     'django-statsd-mozilla>=0.3.16',
     'suds-jurko>=0.6',
     'requests>=2.9.1',

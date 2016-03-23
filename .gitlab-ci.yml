@@ -1,0 +1,9 @@
+stages:
+  - test
+
+test_python:
+  stage: test
+  script:
+    - docker-compose pull
+    - docker-compose build
+    - docker-compose run --rm test ./test.sh
