@@ -14,6 +14,7 @@ requires = [
     'django-statsd-mozilla>=0.3.16',
     'suds-jurko>=0.6',
     'requests>=2.9.1',
+    'versiontag>=1.0.0',
 ]
 
 def fpath(name):
