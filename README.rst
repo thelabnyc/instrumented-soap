@@ -1,6 +1,6 @@
-================
+=================
 Instrumented SOAP
-================
+=================
 
 This package is a wrapper around suds_ that adds django_statsd instrumentation and improved HTTP proxy support.
 
