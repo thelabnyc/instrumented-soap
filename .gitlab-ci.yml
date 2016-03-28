@@ -1,9 +1,17 @@
 stages:
   - test
 
-test_python:
+before_script:
+  - pip install -r requirements.txt
+
+test_python:3.4:
   stage: test
+  image: python:3.4
   script:
-    - docker-compose pull
-    - docker-compose build
-    - docker-compose run --rm test ./test.sh
+    - ./test.sh
+
+test_python:3.5:
+  stage: test
+  image: python:3.5
+  script:
+    - ./test.sh
