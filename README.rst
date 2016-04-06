@@ -44,7 +44,16 @@ Usage
 Changelog
 =========
 
-
-1.0.0 (2016-01-23)
+1.0.2
 ------------------
-Initial release.
+- Use docker executor for tests.
+- Use versiontag>=1.0.3
+
+1.0.1
+------------------
+- Updated README
+
+
+1.0.0
+------------------
+- Initial release.
