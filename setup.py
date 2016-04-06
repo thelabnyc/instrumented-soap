@@ -9,12 +9,15 @@ packages = [
     'soap',
 ]
 
+setup_requires = [
+    'versiontag>=1.0.3',
+]
+
 requires = [
     'Django>=1.8.11',
     'django-statsd-mozilla>=0.3.16',
     'suds-jurko>=0.6',
     'requests>=2.9.1',
-    'versiontag>=1.0.0',
 ]
 
 def fpath(name):
@@ -50,5 +53,6 @@ setup(
     url='https://gitlab.com/thelabnyc/instrumented-soap',
     license='ISC',
     packages=packages,
-    install_requires=requires
+    install_requires=requires,
+    setup_requires=setup_requires
 )
