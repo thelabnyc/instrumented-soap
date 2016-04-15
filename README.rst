@@ -2,6 +2,8 @@
 Instrumented SOAP
 =================
 
+|  |license| |kit| |format| |downloads|
+
 This package is a wrapper around suds_ that adds django_statsd instrumentation and improved HTTP proxy support.
 
 .. _suds: https://bitbucket.org/jurko/suds
@@ -64,3 +66,14 @@ Changelog
 1.0.0
 ------------------
 - Initial release.
+
+
+
+.. |license| image:: https://img.shields.io/pypi/l/instrumented-soap.svg
+    :target: https://pypi.python.org/pypi/instrumented-soap
+.. |kit| image:: https://badge.fury.io/py/instrumented-soap.svg
+    :target: https://pypi.python.org/pypi/instrumented-soap
+.. |format| image:: https://img.shields.io/pypi/format/instrumented-soap.svg
+    :target: https://pypi.python.org/pypi/instrumented-soap
+.. |downloads| image:: https://img.shields.io/pypi/dm/instrumented-soap.svg?maxAge=2592000
+    :target: https://pypi.python.org/pypi/instrumented-soap

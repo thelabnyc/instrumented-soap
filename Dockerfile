@@ -1,4 +1,4 @@
-FROM python:3.5-alpine
+FROM python:3.5
 ENV PYTHONUNBUFFERED 0
 
 RUN mkdir /code
