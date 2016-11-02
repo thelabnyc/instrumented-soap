@@ -32,12 +32,29 @@ except ImportError:
 
 
 class XMLAssertions(object):
+    """
+    Unit test mixin to add XPath assertions on XML data.
+    """
     def assertNodeCount(self, xml_str, xpath, num):
+        """
+        Assert that N number of the given node exist.
+
+        :param xml_str: XML to test
+        :param xpath: XPath query to run
+        :param num: Number of nodes that the XPath query should return
+        """
         doc = etree.fromstring(xml_str)
         nodes = doc.xpath(xpath)
         self.assertEqual(num, len(nodes))
 
     def assertNodeText(self, xml_str, xpath, expected):
+        """
+        Assert that each node returned by the XPath equals the given text.
+
+        :param xml_str: XML to test
+        :param xpath: XPath query to run
+        :param expected: Expected string content
+        """
         doc = etree.fromstring(xml_str)
         nodes = doc.xpath(xpath)
         self.assertTrue(len(nodes) > 0)
@@ -45,6 +62,13 @@ class XMLAssertions(object):
             self.assertEqual(expected, node.text)
 
     def assertNodeAttributes(self, xml_str, xpath, attributes):
+        """
+        Assert that each node returned by the XPath has each of the given attributes and attribute values.
+
+        :param xml_str: XML to test
+        :param xpath: XPath query to run
+        :param expected: Dictionary of attribute names and their expected values
+        """
         doc = etree.fromstring(xml_str)
         nodes = doc.xpath(xpath)
         self.assertTrue(len(nodes) > 0)
@@ -56,11 +80,27 @@ class XMLAssertions(object):
 
 
 class SoapTest(XMLAssertions):
+    """
+    Subclass of :class:`soap.tests.XMLAssertions <soap.tests.XMLAssertions>` that adds behavior useful for
+    mocking and testing a SOAP API at the XML level.
+    """
     def setUp(self):
+        """Test Setup. Clears the :attr:`soap.clients <soap.clients>` cache."""
         soap.clients = {}
 
 
     def _build_transport_with_reply(self, body, status=200, pattern=None, test_request=None):
+        """
+        Build a fake :class:`soap.http.HttpTransport <soap.http.HttpTransport>` that, when called, will
+        reply with the given XML body and status code.
+
+        :param body: XML response data as bytes.
+        :param status: HTTP status code to return.
+        :param pattern: Optional. Regexp pattern to match against the request URL. Useful if your test communicates with multiple SOAP APIs that need different mock responses.
+        :param test_request: Optional. Function to call with a request object, before returning the response. Can use this to run assertions on the SOAP request XML.
+        :return: :class:`soap.http.HttpTransport <soap.http.HttpTransport>` object
+        :rtype: soap.http.HttpTransport
+        """
         headers = HTTPMessage()
         headers.add_header('Content-Type', 'text/xml; charset=utf-8')
         reply = Reply(status, headers, body)

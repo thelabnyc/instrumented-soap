@@ -9,20 +9,29 @@ def overridable(name, default=None):
     except NameError:
         return default
 
-# Enables Suds request/response logging
+#: Enables Suds request/response logging
+#: Set Django ``settings.DEBUG`` to override.
 DEBUG = overridable('DEBUG', False)
 
-# Remove the Suds file cache of pickled WSDLs upon process exit
+#: Remove the Suds file cache of pickled WSDLs upon process exit
+#: Set Django ``settings.SOAP_REMOVE_CACHE_ON_EXIT`` to override.
 REMOVE_CACHE_ON_EXIT = overridable('SOAP_REMOVE_CACHE_ON_EXIT', False)
 
-# Optional mapping of http(s):// WSDL URLs => file:// URLs to locally saved versions of the WSDL
+#: Optional mapping of ``http(s)://`` WSDL URLs => ``file://`` URLs to locally saved
+#: versions of the WSDL.
+#: Set Django ``settings.SOAP_WSDL_INTERCEPTS`` to override.
 WSDL_INTERCEPTS = overridable('SOAP_WSDL_INTERCEPTS', {})
 
-# Optional HTTP/HTTPS proxy URL
+#: Optional HTTP/HTTPS proxy URL
+#: Set Django ``settings.SOAP_PROXY_URL`` to override.
 PROXY_URL = overridable('SOAP_PROXY_URL')
 
-# Timeouts for opening WSDLs and sending method calls. Should be a
-# tuple containing (1) the TCP connect timeout and (2) the response
-# timeout.
+#: Timeout for opening WSDLs. Should be a tuple containing (1) the TCP connect
+#: timeout and (2) the response timeout.
+#: Set Django ``settings.SOAP_OPEN_TIMEOUT`` to override.
 OPEN_TIMEOUT = overridable('SOAP_OPEN_TIMEOUT', (3.05, 27))
+
+#: Timeout for sending SOAP method calls. Should be a tuple containing (1) the
+#: TCP connect timeout and (2) the response timeout.
+#: Set Django ``settings.SOAP_SEND_TIMEOUT`` to override.
 SEND_TIMEOUT = overridable('SOAP_SEND_TIMEOUT', (3.05, 10))
