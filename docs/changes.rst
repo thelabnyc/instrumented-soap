@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+1.1.2
+------------------
+- Fix bug in ``soap.tests.SoapTest._build_transport_with_reply`` which broke SOAP request pass-through for domains not matching the given pattern.
+
 1.1.1
 ------------------
 - Add better documentation
