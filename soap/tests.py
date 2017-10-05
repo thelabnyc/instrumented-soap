@@ -108,7 +108,7 @@ class SoapTest(XMLAssertions):
         transport = HttpTransport()
         def surrogate(request, *args, **kwargs):
             if pattern and not re.search(pattern, request.url):
-                return HttpTransport.send(transport, *args, **kwargs)
+                return HttpTransport.send(transport, request, *args, **kwargs)
             if test_request:
                 test_request(request)
             return reply
