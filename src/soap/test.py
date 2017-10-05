@@ -96,8 +96,10 @@ class SoapTest(XMLAssertions):
 
         :param body: XML response data as bytes.
         :param status: HTTP status code to return.
-        :param pattern: Optional. Regexp pattern to match against the request URL. Useful if your test communicates with multiple SOAP APIs that need different mock responses.
-        :param test_request: Optional. Function to call with a request object, before returning the response. Can use this to run assertions on the SOAP request XML.
+        :param pattern: Optional. Regexp pattern to match against the request URL. Useful if your
+                        test communicates with multiple SOAP APIs that need different mock responses.
+        :param test_request: Optional. Function to call with a request object, before returning
+                             the response. Can use this to run assertions on the SOAP request XML.
         :return: :class:`soap.http.HttpTransport <soap.http.HttpTransport>` object
         :rtype: soap.http.HttpTransport
         """
@@ -106,12 +108,14 @@ class SoapTest(XMLAssertions):
         reply = Reply(status, headers, body)
 
         transport = HttpTransport()
+
         def surrogate(request, *args, **kwargs):
             if pattern and not re.search(pattern, request.url):
                 return HttpTransport.send(transport, request, *args, **kwargs)
             if test_request:
                 test_request(request)
             return reply
+
         transport.send = mock.MagicMock()
         transport.send.side_effect = surrogate
         return transport

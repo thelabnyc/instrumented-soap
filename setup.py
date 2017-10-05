@@ -1,30 +1,37 @@
-#!/usr/bin/env python
+from setuptools import setup, find_packages, Distribution
 import codecs
 import os.path
-from setuptools import setup
-from versiontag import get_version, cache_git_tag
+
+# Make sure versiontag exists before going any further
+Distribution().fetch_build_eggs('versiontag>=1.2.0')
+
+from versiontag import get_version, cache_git_tag  # NOQA
 
 
-packages = [
-    'soap',
-]
+packages = find_packages('src')
 
-setup_requires = [
-    'versiontag>=1.0.3',
-]
-
-requires = [
+install_requires = [
     'Django>=1.8.11',
     'django-statsd-mozilla>=0.3.16',
     'suds-jurko>=0.6',
     'requests>=2.9.1',
 ]
 
+extras_require = {
+    'development': [
+        'flake8>=3.2.1',
+        'tox>=2.6.0',
+    ],
+}
+
+
 def fpath(name):
     return os.path.join(os.path.dirname(__file__), name)
 
+
 def read(fname):
     return codecs.open(fpath(fname), encoding='utf-8').read()
+
 
 cache_git_tag()
 
@@ -52,7 +59,8 @@ setup(
     author_email='crgwbr@gmail.com',
     url='https://gitlab.com/thelabnyc/instrumented-soap',
     license='ISC',
+    package_dir={'': 'src'},
     packages=packages,
-    install_requires=requires,
-    setup_requires=setup_requires
+    install_requires=install_requires,
+    extras_require=extras_require,
 )

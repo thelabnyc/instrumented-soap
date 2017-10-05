@@ -1,11 +1,10 @@
 from django_statsd.clients import statsd
 from suds.transport import Transport, Reply
+from . import settings
 import urllib.request
 import logging
 import requests
 import io
-
-from . import settings
 
 
 logger = logging.getLogger(__name__)

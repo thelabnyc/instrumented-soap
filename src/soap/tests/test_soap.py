@@ -1,10 +1,9 @@
-import unittest
-import soap
 from soap import settings
 from django.test import TestCase
+import soap
 
 
-class SOAPTest(unittest.TestCase):
+class SOAPTest(TestCase):
     def test_basic_soap_method_call(self):
         wsdl = 'http://www.webservicex.net/uszip.asmx?WSDL'
         client = soap.get_client(wsdl, 'LOCATIONS')
@@ -20,7 +19,7 @@ class SOAPProxyTest(TestCase):
         """ Set sandbox/settings to use """
         if settings.PROXY_URL:
             wsdl = 'http://www.webservicex.net/uszip.asmx?WSDL'
-            client = soap.get_client(wsdl, 'LOCATIONS')
+            soap.get_client(wsdl, 'LOCATIONS')
 
     def test_private_soap_with_proxy(self):
         """ Intended for local and private use only
@@ -30,4 +29,4 @@ class SOAPProxyTest(TestCase):
         if not private_ip:
             return
         wsdl = 'http://{}/TAXCCH/Service3.5.svc?singleWsdl'.format(private_ip)
-        client = soap.get_client(wsdl, 'CCH')
+        soap.get_client(wsdl, 'CCH')

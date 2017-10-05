@@ -1,5 +1,5 @@
 test:
   build: .
-  command: ./test.sh
+  command: tox -e py36
   volumes:
     - .:/code

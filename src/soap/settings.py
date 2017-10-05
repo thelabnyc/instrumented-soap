@@ -3,11 +3,13 @@ try:
 except ImportError:
     pass
 
+
 def overridable(name, default=None):
     try:
         return getattr(settings, name, default)
     except NameError:
         return default
+
 
 #: Enables Suds request/response logging
 #: Set Django ``settings.DEBUG`` to override.

@@ -2,12 +2,9 @@ from django_statsd.clients import statsd
 from suds.client import Client
 from suds.plugin import MessagePlugin
 from suds.cache import FileCache
-import os.path
-import pathlib
-import logging
-
-from . import settings
 from .http import HttpTransport
+from . import settings
+import logging
 
 
 logger = logging.getLogger(__name__)
