@@ -53,7 +53,8 @@ def get_client(wsdl, log_prefix, plugins=[], **kwargs):
 
     :param wsdl: String URL of a SOAP WSDL
     :param log_prefix: String prefix to prepend to log lines (when logging XML traffic in DEBUG mode)
-    :param plugins: List of additional plugins :class:`suds.plugin.Plugin <suds.plugin.Plugin>` to pass on to the :class:`suds.client.Client <suds.client.Client>` object.
+    :param plugins: List of additional plugins :class:`suds.plugin.Plugin <suds.plugin.Plugin>` to pass on to the
+        :class:`suds.client.Client <suds.client.Client>` object.
     :param kwargs: Optional keyword arguments to pass on to the :class:`suds.client.Client <suds.client.Client>` object
     :return: :class:`suds.client.Client <suds.client.Client>` object
     :rtype: suds.client.Client
