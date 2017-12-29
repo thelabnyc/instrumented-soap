@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+1.2.0
+------------------
+- Add ability to pass in custom plug-ins to the Suds client.
+
 1.1.1
 ------------------
 - Add better documentation
