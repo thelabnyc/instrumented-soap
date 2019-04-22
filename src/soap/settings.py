@@ -1,3 +1,4 @@
+import warnings
 try:
     from django.conf import settings
 except ImportError:
@@ -25,8 +26,20 @@ REMOVE_CACHE_ON_EXIT = overridable('SOAP_REMOVE_CACHE_ON_EXIT', False)
 WSDL_INTERCEPTS = overridable('SOAP_WSDL_INTERCEPTS', {})
 
 #: Optional HTTP/HTTPS proxy URL
+#: DEPRECATED: Use SOAP_PROXIES instead
 #: Set Django ``settings.SOAP_PROXY_URL`` to override.
 PROXY_URL = overridable('SOAP_PROXY_URL')
+if PROXY_URL:
+    warnings.warn("The SOAP_PROXY_URL setting is deprecated. Migrate to the SOAP_PROXIES setting.", DeprecationWarning)
+
+#: Optional HTTP/HTTPS proxy URL
+#: Set Django ``settings.SOAP_PROXY_URL`` to override.
+#: Format:
+#:
+#:     SOAP_PROXIES = {
+#:         "soap.my-server.com": "http://myproxy.com:3128/",
+#:     }
+PROXIES = overridable('SOAP_PROXIES')
 
 #: Timeout for opening WSDLs. Should be a tuple containing (1) the TCP connect
 #: timeout and (2) the response timeout.

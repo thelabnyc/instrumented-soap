@@ -16,4 +16,5 @@ INSTALLED_APPS = [
 
 SECRET_KEY = 'li0$-gnv)76g$yf7p@(cg-^_q7j6df5cx$o-gsef5hd68phj!4'
 
-SOAP_PROXY_URL = None
+SOAP_PROXIES = {
+}

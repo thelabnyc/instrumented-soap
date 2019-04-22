@@ -9,7 +9,7 @@ class SOAPTest(TestCase):
         client = soap.get_client(wsdl, 'LOCATIONS')
         client.set_options(port='NumberConversionSoap')
         resp = client.service.NumberToWords('42')
-        self.assertEquals(str(resp).strip(), 'forty two')
+        self.assertEqual(str(resp).strip(), 'forty two')
 
 
 class SOAPProxyTest(TestCase):
