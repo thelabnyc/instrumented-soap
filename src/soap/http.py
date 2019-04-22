@@ -26,10 +26,6 @@ class HttpTransport(Transport):
     #: Timeout for sending a SOAP call. Tuple (CONNECT_TIMEOUT, READ_TIMEOUT)
     send_timeout = settings.SEND_TIMEOUT
 
-    def __init__(self, **kwargs):
-        super().__init__()
-        self.session = requests.Session()
-
 
     def open(self, request):
         """
@@ -46,7 +42,7 @@ class HttpTransport(Transport):
             if url.startswith('file://'):
                 content = urllib.request.urlopen(url)
             else:
-                resp = self.session.get(url,
+                resp = requests.get(url,
                     proxies=self.proxies(url),
                     timeout=self.open_timeout)
                 resp.raise_for_status()
@@ -68,7 +64,7 @@ class HttpTransport(Transport):
         logger.debug('Sending SOAP request: %s' % url)
         statsd.incr('soap.send')
         with statsd.timer('soap.send'):
-            resp = self.session.post(url,
+            resp = requests.post(url,
                 proxies=self.proxies(url),
                 timeout=self.send_timeout,
                 data=msg,
