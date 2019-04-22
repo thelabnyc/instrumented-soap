@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+1.3.0
+------------------
+- Add new setting ``SOAP_PROXIES``, which allows setting Soap proxies per WSDL domain. This allows, for example, using a proxy for requests to ``soap.some-api.com``, but not using a proxy for requests to ``soap.some-other-api.com``.
+- Deprecate ``SOAP_PROXY_URL`` setting in favor of the new ``SOAP_PROXIES`` setting.
+- Change connection pooling behavior.
+    - Previously, we used ``requests.Session`` to re-use TCP connections between Soap calls.
+    - This has been removed due to it causing issues with some Soap servers. A new TCP connection is now created for each request.
+
 1.2.0
 ------------------
 - Add ability to pass in custom plug-ins to the Suds client.
