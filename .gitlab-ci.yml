@@ -3,20 +3,27 @@ stages:
 
 services: []
 
-before_script:
-  - pip install tox
+include:
+  - project: thelabnyc/gitlab-ci-templates
+    file: /ci/sast.gitlab-ci.yml
 
 test_python:3.5:
   stage: test
   image: python:3.5
-  script: tox -e 'py35-django{111,200,210,220}'
+  script:
+    - pip install tox
+    - tox -e 'py35-django{111,200,210,220}'
 
 test_python:3.6:
   stage: test
   image: python:3.6
-  script: tox -e 'py36-django{111,200,210,220}'
+  script:
+    - pip install tox
+    - tox -e 'py36-django{111,200,210,220}'
 
 test_python:3.7:
   stage: test
   image: python:3.7
-  script: tox -e 'py37-django{200,210,220}'
+  script:
+    - pip install tox
+    - tox -e 'py37-django{200,210,220}'
