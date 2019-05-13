@@ -21,6 +21,8 @@ extras_require = {
     'development': [
         'flake8>=3.2.1',
         'tox>=2.6.0',
+        'sphinx>=1.6.5',
+        'sphinx-rtd-theme>=0.4.3',
     ],
 }
 
