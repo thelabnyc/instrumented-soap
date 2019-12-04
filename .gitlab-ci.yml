@@ -7,13 +7,6 @@ include:
   - project: thelabnyc/gitlab-ci-templates
     file: /ci/sast.gitlab-ci.yml
 
-test_python:3.5:
-  stage: test
-  image: python:3.5
-  script:
-    - pip install tox
-    - tox -e 'py35-django{111,220,300}'
-
 test_python:3.6:
   stage: test
   image: python:3.6
