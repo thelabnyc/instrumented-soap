@@ -12,7 +12,6 @@ packages = find_packages('src')
 
 install_requires = [
     'Django>=1.11',
-    'django-statsd-mozilla>=0.3.16',
     'suds-jurko>=0.6',
     'requests>=2.9.1',
 ]
@@ -39,7 +38,7 @@ cache_git_tag()
 
 setup(
     name='instrumented-soap',
-    description="Wrapper around suds-jurko that adds django_statsd instrumentation and improved proxy support.",
+    description="Wrapper around suds-jurko that adds improved proxy support and testing tools.",
     version=get_version(pypi=True),
     long_description=open('README.rst').read(),
     classifiers=[

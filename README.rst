@@ -18,7 +18,6 @@ What's instrumented-soap?
 
 This package is a thin wrapper around the `suds-jurko <https://bitbucket.org/jurko/suds>`_ library that adds several useful features.
 
-- Instrumentation and stat tracking using `django_statsd <https://pypi.python.org/pypi/django-statsd-mozilla>`_.
 - Improved HTTP proxy support for SOAP Transports.
 - Useful SOAP API mocking and unit-testing tools.
 

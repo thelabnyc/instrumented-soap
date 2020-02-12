@@ -1,4 +1,3 @@
-from django_statsd.clients import statsd
 from suds.client import Client
 from suds.plugin import MessagePlugin
 from suds.cache import FileCache
@@ -69,7 +68,6 @@ def get_client(wsdl, log_prefix, plugins=[], **kwargs):
         try:
             clients[wsdl] = Client(wsdl, plugins=plugins, transport=get_transport(), **kwargs)
         except Exception as e:
-            statsd.incr('soap.wsdl-creation-error')
             logger.fatal('Failed to create SOAP client with WSDL at %s' % wsdl)
             raise e
     return clients[wsdl]

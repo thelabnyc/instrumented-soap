@@ -1,4 +1,3 @@
-from django_statsd.clients import statsd
 from suds.transport import Transport, Reply
 from . import settings
 import urllib.request
@@ -37,16 +36,14 @@ class HttpTransport(Transport):
         """
         url = request.url
         logger.debug('Opening WSDL: %s ' % url)
-        statsd.incr('soap.open')
-        with statsd.timer('soap.open'):
-            if url.startswith('file://'):
-                content = urllib.request.urlopen(url)
-            else:
-                resp = requests.get(url,
-                    proxies=self.proxies(url),
-                    timeout=self.open_timeout)
-                resp.raise_for_status()
-                content = io.BytesIO(resp.content)
+        if url.startswith('file://'):
+            content = urllib.request.urlopen(url)
+        else:
+            resp = requests.get(url,
+                proxies=self.proxies(url),
+                timeout=self.open_timeout)
+            resp.raise_for_status()
+            content = io.BytesIO(resp.content)
         return content
 
 
@@ -62,13 +59,11 @@ class HttpTransport(Transport):
         msg = request.message
         headers = request.headers
         logger.debug('Sending SOAP request: %s' % url)
-        statsd.incr('soap.send')
-        with statsd.timer('soap.send'):
-            resp = requests.post(url,
-                proxies=self.proxies(url),
-                timeout=self.send_timeout,
-                data=msg,
-                headers=headers)
+        resp = requests.post(url,
+            proxies=self.proxies(url),
+            timeout=self.send_timeout,
+            data=msg,
+            headers=headers)
         resp.raise_for_status()
         reply = Reply(requests.codes.OK, resp.headers, resp.content)
         return reply
