@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+2.0.0
+------------------
+- Remove StatsD counters and metrics.
+
 1.3.0
 ------------------
 - Add new setting ``SOAP_PROXIES``, which allows setting Soap proxies per WSDL domain. This allows, for example, using a proxy for requests to ``soap.some-api.com``, but not using a proxy for requests to ``soap.some-other-api.com``.
