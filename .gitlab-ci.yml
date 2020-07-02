@@ -1,6 +1,10 @@
 stages:
   - test
 
+variables:
+  # Set SAST / DAST testing version
+  SP_VERSION: 11-10-stable
+
 services: []
 
 include:
