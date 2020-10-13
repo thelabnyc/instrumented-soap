@@ -1,15 +1,7 @@
 stages:
   - test
 
-variables:
-  # Set SAST / DAST testing version
-  SP_VERSION: 11-10-stable
-
 services: []
-
-include:
-  - project: thelabnyc/gitlab-ci-templates
-    file: /ci/sast.gitlab-ci.yml
 
 test_python:3.6:
   stage: test
