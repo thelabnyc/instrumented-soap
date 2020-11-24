@@ -3,23 +3,19 @@ stages:
 
 services: []
 
-test_python:3.6:
+test:
   stage: test
-  image: python:3.6
+  image: $IMAGE
   script:
     - pip install tox
-    - tox -e 'py36-django{111,220,300}'
+    - tox -e $TOX_ENVS
+  parallel:
+    matrix:
+      - IMAGE: python:3.7
+        TOX_ENVS: py37-django{220,300,310}
 
-test_python:3.7:
-  stage: test
-  image: python:3.7
-  script:
-    - pip install tox
-    - tox -e 'py37-django{220,300}'
+      - IMAGE: python:3.8
+        TOX_ENVS: py38-django{220,300,310}
 
-test_python:3.8:
-  stage: test
-  image: python:3.8
-  script:
-    - pip install tox
-    - tox -e 'py38-django{220,300}'
+      - IMAGE: python:3.9
+        TOX_ENVS: py39-django{220,300,310}

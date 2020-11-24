@@ -11,7 +11,7 @@ from versiontag import get_version, cache_git_tag  # NOQA
 packages = find_packages('src')
 
 install_requires = [
-    'Django>=1.11',
+    'Django>=2.2',
     'suds-jurko>=0.6',
     'requests>=2.9.1',
 ]
