@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+2.1.0
+------------------
+- Add support for Django 3.2
+
 2.0.0
 ------------------
 - Remove StatsD counters and metrics.
