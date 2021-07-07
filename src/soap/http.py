@@ -25,7 +25,6 @@ class HttpTransport(Transport):
     #: Timeout for sending a SOAP call. Tuple (CONNECT_TIMEOUT, READ_TIMEOUT)
     send_timeout = settings.SEND_TIMEOUT
 
-
     def open(self, request):
         """
         Open a SOAP WSDL
@@ -35,17 +34,16 @@ class HttpTransport(Transport):
         :rtype: io.BytesIO
         """
         url = request.url
-        logger.debug('Opening WSDL: %s ' % url)
-        if url.startswith('file://'):
+        logger.debug("Opening WSDL: %s " % url)
+        if url.startswith("file://"):
             content = urllib.request.urlopen(url)
         else:
-            resp = requests.get(url,
-                proxies=self.proxies(url),
-                timeout=self.open_timeout)
+            resp = requests.get(
+                url, proxies=self.proxies(url), timeout=self.open_timeout
+            )
             resp.raise_for_status()
             content = io.BytesIO(resp.content)
         return content
-
 
     def send(self, request):
         """
@@ -58,16 +56,17 @@ class HttpTransport(Transport):
         url = request.url
         msg = request.message
         headers = request.headers
-        logger.debug('Sending SOAP request: %s' % url)
-        resp = requests.post(url,
+        logger.debug("Sending SOAP request: %s" % url)
+        resp = requests.post(
+            url,
             proxies=self.proxies(url),
             timeout=self.send_timeout,
             data=msg,
-            headers=headers)
+            headers=headers,
+        )
         resp.raise_for_status()
         reply = Reply(requests.codes.OK, resp.headers, resp.content)
         return reply
-
 
     def proxies(self, url):
         """

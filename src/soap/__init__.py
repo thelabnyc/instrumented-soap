@@ -21,16 +21,17 @@ FileCache.remove_default_location_on_exit = settings.REMOVE_CACHE_ON_EXIT
 
 class LogPlugin(MessagePlugin):
     """Suds plugin used in DEBUG mode. Logs all incoming and outgoing XML data at the DEBUG level."""
+
     def __init__(self, prefix):
         self.prefix = prefix
 
     def sending(self, context):
         """Called when sending a SOAP request"""
-        logger.debug('%s Request: %s' % (self.prefix, context.envelope))
+        logger.debug("%s Request: %s" % (self.prefix, context.envelope))
 
     def received(self, context):
         """Called when receiving a SOAP response"""
-        logger.debug('%s Response: %s' % (self.prefix, context.reply))
+        logger.debug("%s Response: %s" % (self.prefix, context.reply))
 
 
 def get_transport():
@@ -63,11 +64,13 @@ def get_client(wsdl, log_prefix, plugins=[], **kwargs):
 
     if wsdl not in clients:
         if settings.DEBUG:
-            plugins.append( LogPlugin(log_prefix) )
+            plugins.append(LogPlugin(log_prefix))
 
         try:
-            clients[wsdl] = Client(wsdl, plugins=plugins, transport=get_transport(), **kwargs)
+            clients[wsdl] = Client(
+                wsdl, plugins=plugins, transport=get_transport(), **kwargs
+            )
         except Exception as e:
-            logger.fatal('Failed to create SOAP client with WSDL at %s' % wsdl)
+            logger.fatal("Failed to create SOAP client with WSDL at %s" % wsdl)
             raise e
     return clients[wsdl]
