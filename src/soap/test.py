@@ -7,7 +7,6 @@ import re
 from .http import HttpTransport
 
 
-
 try:
     from lxml import etree
 except ImportError:
@@ -30,11 +29,11 @@ except ImportError:
                     pass
 
 
-
 class XMLAssertions(object):
     """
     Unit test mixin to add XPath assertions on XML data.
     """
+
     def assertNodeCount(self, xml_str, xpath, num):
         """
         Assert that N number of the given node exist.
@@ -78,18 +77,19 @@ class XMLAssertions(object):
                 self.assertEqual(value, node.attrib[attribute])
 
 
-
 class SoapTest(XMLAssertions):
     """
     Subclass of :class:`soap.tests.XMLAssertions <soap.tests.XMLAssertions>` that adds behavior useful for
     mocking and testing a SOAP API at the XML level.
     """
+
     def setUp(self):
         """Test Setup. Clears the :attr:`soap.clients <soap.clients>` cache."""
         soap.clients = {}
 
-
-    def _build_transport_with_reply(self, body, status=200, pattern=None, test_request=None):
+    def _build_transport_with_reply(
+        self, body, status=200, pattern=None, test_request=None
+    ):
         """
         Build a fake :class:`soap.http.HttpTransport <soap.http.HttpTransport>` that, when called, will
         reply with the given XML body and status code.
@@ -104,7 +104,7 @@ class SoapTest(XMLAssertions):
         :rtype: soap.http.HttpTransport
         """
         headers = HTTPMessage()
-        headers.add_header('Content-Type', 'text/xml; charset=utf-8')
+        headers.add_header("Content-Type", "text/xml; charset=utf-8")
         reply = Reply(status, headers, body)
 
         transport = HttpTransport()
