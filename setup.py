@@ -22,6 +22,10 @@ extras_require = {
         "tox>=2.6.0",
         "sphinx>=1.6.5",
         "sphinx-rtd-theme>=0.4.3",
+        # Cap setuptools version due to conflict between new 2to3 behavior and suds-jurko. See:
+        # - https://github.com/pypa/setuptools/issues/2769
+        # - https://www.gitmemory.com/issue/pypa/setuptools/2784/924528853
+        "setuptools<58.0.0",
     ],
 }
 
