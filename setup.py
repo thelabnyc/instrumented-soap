@@ -38,7 +38,7 @@ cache_git_tag()
 
 setup(
     name="instrumented-soap",
-    description="Wrapper around suds-jurko that adds improved proxy support and testing tools.",
+    description="Wrapper around suds-community that adds improved proxy support and testing tools.",
     version=get_version(pypi=True),
     long_description=open("README.rst").read(),
     classifiers=[
