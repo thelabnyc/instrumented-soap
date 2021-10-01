@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2.1.1
+------------------
+- Fix setuptools / 2to3 issues by switching from suds-jurko to suds-community.
+
+
 2.1.0
 ------------------
 - Add support for Django 3.2
