@@ -8,7 +8,7 @@ flake8==3.5.0
 idna==2.6
 imagesize==1.1.0
 Jinja2==2.10.1
-lxml==4.2.1
+lxml==4.9.1
 MarkupSafe==1.1.1
 mccabe==0.6.1
 packaging==19.0
