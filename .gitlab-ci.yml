@@ -24,17 +24,17 @@ test:
     - tox -e $TOX_ENVS
   parallel:
     matrix:
-      - IMAGE: python:3.7
-        TOX_ENVS: py37-django{220,300,310,320}
-
       - IMAGE: python:3.8
-        TOX_ENVS: py38-django{220,300,310,320}
+        TOX_ENVS: py38-django{320,400,410}
 
       - IMAGE: python:3.9
-        TOX_ENVS: py39-django{220,300,310,320}
+        TOX_ENVS: py39-django{320,400,410}
+
+      - IMAGE: python:3.10
+        TOX_ENVS: py310-django{320,400,410}
 
 publish_pkg:
-  image: python:3.9
+  image: python:3
   stage: release
   rules:
     - if: $CI_COMMIT_TAG && $CI_COMMIT_REF_PROTECTED

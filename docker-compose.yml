@@ -1,5 +1,8 @@
-test:
-  build: .
-  command: tox -e py36
-  volumes:
-    - .:/code
+version: '3.4'
+
+services:
+  test:
+    build: .
+    command: tox -e py36
+    volumes:
+      - .:/code
