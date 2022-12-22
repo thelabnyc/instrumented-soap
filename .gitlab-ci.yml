@@ -21,7 +21,7 @@ test:
   image: $IMAGE
   script:
     - pip install tox
-    - tox -e $TOX_ENVS
+    - tox -e "$TOX_ENVS"
   parallel:
     matrix:
       - IMAGE: python:3.8
