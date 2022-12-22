@@ -21,17 +21,12 @@ test:
   image: $IMAGE
   script:
     - pip install tox
-    - tox -e "$TOX_ENVS"
+    - tox --skip-missing-interpreters
   parallel:
     matrix:
       - IMAGE: python:3.8
-        TOX_ENVS: py38-django{320,400,410}
-
       - IMAGE: python:3.9
-        TOX_ENVS: py39-django{320,400,410}
-
       - IMAGE: python:3.10
-        TOX_ENVS: py310-django{320,400,410}
 
 publish_pkg:
   image: python:3
