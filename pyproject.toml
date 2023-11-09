@@ -1,0 +1,29 @@
+[build-system]
+requires = [ "poetry-core>=1.0.0",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "instrumented-soap"
+version = "2.1.1.post12"
+description = "Wrapper around suds-community that adds improved proxy support and testing tools."
+authors = [ "thelabnyc <thelabdev@thelabnyc.com>",]
+readme = "README.rst"
+homepage = "https://gitlab.com/thelabnyc/instrumented-soap"
+repository = "https://gitlab.com/thelabnyc/instrumented-soap"
+license = "ISC"
+
+[[tool.poetry.packages]]
+include = "soap"
+from = "src"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = ">=3.2"
+suds-community = ">=0.8.5"
+requests = ">=2.9.1"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = ">=3.2.1"
+tox = ">=2.6.0"
+sphinx = ">=1.6.5"
+sphinx-rtd-theme = ">=0.4.3"
