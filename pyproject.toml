@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "instrumented-soap"
-version = "2.1.1.post12"
+version = "2.1.2-b1"
 description = "Wrapper around suds-community that adds improved proxy support and testing tools."
 authors = [ "thelabnyc <thelabdev@thelabnyc.com>",]
 readme = "README.rst"
