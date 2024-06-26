@@ -18,7 +18,7 @@ from = "src"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-Django = ">=5.0.6"
+Django = ">=4.2"
 suds-community = ">=0.8.5"
 requests = ">=2.32.3"
 
