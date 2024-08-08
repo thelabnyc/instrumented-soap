@@ -1,5 +1,15 @@
 # Changes
 
+## v2.1.2b3 (2024-08-08)
+
+### Fix
+
+- **deps**: update dependency suds-community to >=1.1.2
+- **deps**: update dependency requests to >=2.32.3
+- **deps**: update dependency django to >=5.0.6
+- **deps**: update dependency requests to v2.32.3
+- **deps**: update dependency django to v4.2.13
+
 ## v2.1.1
 
 - Fix setuptools / 2to3 issues by switching from suds-jurko to suds-community.
