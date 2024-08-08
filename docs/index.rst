@@ -9,5 +9,4 @@ Contents
 
    install
    api
-   changes
    license
