@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "instrumented-soap"
-version = "2.1.2-b2"
+version = "2.1.2b2"
 description = "Wrapper around suds-community that adds improved proxy support and testing tools."
 authors = ["thelab <thelabdev@thelab.co>"]
 readme = "README.rst"
@@ -32,7 +32,6 @@ sphinx-rtd-theme = ">=2.0.0"
 name = "cz_conventional_commits"
 annotated_tag = true
 gpg_sign = true
-major_version_zero = true
 tag_format = "v$version"
 update_changelog_on_bump = true
 changelog_merge_prerelease = true
