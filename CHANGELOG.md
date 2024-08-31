@@ -1,5 +1,11 @@
 # Changes
 
+## v2.1.2 (2024-08-31)
+
+### Fix
+
+- **deps**: update dependency suds-community to >=1.2.0
+
 ## v2.1.2b3 (2024-08-08)
 
 ### Fix
