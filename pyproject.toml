@@ -17,7 +17,7 @@ include = "soap"
 from = "src"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.12"
 Django = ">=4.2"
 suds-community = ">=1.2.0"
 requests = ">=2.32.3"
